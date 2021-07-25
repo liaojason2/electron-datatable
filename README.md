@@ -1,5 +1,5 @@
 # electron-datatable
-Practice how to show data using jquery datatable on election app.
+Practice how to show data using jquery library datatable on election app.
 ## Setup
 - Install dependencies with `npm i`
 - Run `npm start` to start application.
