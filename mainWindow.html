@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ShoppingList</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/1.10.19/css/scroller.jquery.dataTables.min.css">
+  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" language="javascript"
+    src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo center">Contact Information</a>
+    </div>
+  </nav>
+  <table id="example" class="display nowrap" style="width:100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>ZIP / Post code</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+  </table>
+
+
+</body>
+
+<script>
+  $(document).ready(function () {
+    $('#example').DataTable({
+      serverSide: true,
+      ordering: false,
+      searching: false,
+      ajax: function (data, callback, settings) {
+        var out = [];
+
+        for (var i = data.start, ien = data.start + data.length; i < ien; i++) {
+          out.push([i + '-1', i + '-2', i + '-3', i + '-4', i + '-5']);
+        }
+
+        setTimeout(function () {
+          callback({
+            draw: data.draw,
+            data: out,
+            recordsTotal: 5000000,
+            recordsFiltered: 5000000
+          });
+        }, 50);
+      },
+      scrollY: 200,
+      scroller: {
+        loadingIndicator: true
+      },
+    });
+  });
+</script>
+
+</html>
